@@ -92,7 +92,7 @@ if (app.Environment.IsDevelopment())
     {
         foreach (var description in provider.ApiVersionDescriptions)
         {
-            options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+            options.SwaggerEndpoint($"{description.GroupName}/swagger.json",
             description.GroupName.ToUpperInvariant());
         }
     });

@@ -27,7 +27,7 @@ namespace ProductAPI.Extensions
                     description.GroupName,
                     CreataeSecurityScheme());
 
-                options.AddSecurityRequirement(CreateSecurityRequirement());
+                options.AddSecurityRequirement(CreateSecurityRequirement(description.GroupName));
             }
         }
 
@@ -66,14 +66,14 @@ namespace ProductAPI.Extensions
             return securityScheme;
         }
 
-        private OpenApiSecurityRequirement CreateSecurityRequirement()
+        private OpenApiSecurityRequirement CreateSecurityRequirement(string groupName)
         {
             var securityRequirement = new OpenApiSecurityRequirement()
             {
                 {
                     new OpenApiSecurityScheme{
                     Reference = new OpenApiReference
-                    {Type = ReferenceType.SecurityScheme, Id = "Bearer"}
+                    {Type = ReferenceType.SecurityScheme, Id = groupName}
                     }, new string[] {}
                 }
             };
